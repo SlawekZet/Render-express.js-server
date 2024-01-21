@@ -35,6 +35,30 @@ export const getUrl = async (req, res) => {
   }
 };
 
+// Get original URL: POST
+export const getOrgUrl = async (req, res) => {
+  const client = getClient();
+  const shortPath = req.body.shortenedUrlPath;
+
+  try {
+    const collection = client.db("url-shortener").collection("urls");
+    const searchResult = await collection.findOne({
+      shortenedUrlPath: shortPath,
+    });
+
+    if (searchResult) {
+      res.json(searchResult);
+    } else {
+      res.status(404).json({
+        message: `URL connected to https://shooort.eu/${shortPath} not found`,
+      });
+    }
+  } catch (error) {
+    console.error("Error fetching shortened URLs:", error);
+    res.status(500).send(error);
+  }
+};
+
 // Shorten new URL: POST
 export const shortenUrl = async (req, res) => {
   const client = getClient();
