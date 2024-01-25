@@ -17,7 +17,7 @@ const shortUrlPathGenerator = () => {
 // Get shortened URL: GET
 export const getUrl = async (req, res) => {
   const client = getClient();
-  const orgUrl = req.body.originalUrl;
+  const orgUrl = req.query.url;
 
   try {
     const collection = client.db("url-shortener").collection("urls");
@@ -38,7 +38,7 @@ export const getUrl = async (req, res) => {
 // Get original URL: POST
 export const getOrgUrl = async (req, res) => {
   const client = getClient();
-  const shortPath = req.body.shortenedUrlPath;
+  const shortPath = req.query.shortenedUrlPath;
 
   try {
     const collection = client.db("url-shortener").collection("urls");

@@ -12,10 +12,10 @@ app.use(express.json());
 connectToDatabase();
 
 //get a record from the db based on the originalUrl passed in the body
-app.post("/get-url", getUrl);
+app.get("/get-url", getUrl);
 
 //get an original url based on the short url path passed in the body
-app.post("/get-org-url", getOrgUrl);
+app.get("/get-org-url", getOrgUrl);
 
 //shorten a provided url
 app.post("/shorten", shortenUrl);
