@@ -6,7 +6,11 @@ const urlRoutes = require('./routes/urls');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: 'http://localhost:5173', // or an array of allowed origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // specify the allowed HTTP methods
+}));
 const PORT = process.env.PORT || 3000;
 
 //connect to MongoDB
