@@ -6,7 +6,11 @@ const urlRoutes = require('./routes/urls');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: 'https://shooort.eu',
+  })
+);
 const PORT = process.env.PORT || 3000;
 
 connectDB();
