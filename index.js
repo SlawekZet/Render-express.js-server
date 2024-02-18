@@ -6,20 +6,17 @@ const urlRoutes = require('./routes/urls');
 const cors = require('cors');
 
 const app = express();
-
 app.use(cors());
 const PORT = process.env.PORT || 3000;
 
-//connect to MongoDB
 connectDB();
 
-//Parse JSON request body
 app.use(express.json());
 
 // Define authentication routes
 app.use('/auth', authRoutes);
 
-// Define authentication routes
+// Define user routes
 app.use('/user', userRoutes);
 
 //get a record from the db based on the originalUrl passed in the body
